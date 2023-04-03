@@ -9,7 +9,12 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        arrayOne(arr);//problem 1
+        //problem 1
+        //arrayOne(arr);
+        //problem 2
+        //arrayAvg(arr);
+
+
 
     }
 //problem 1
@@ -25,6 +30,18 @@ public class Main {
             return;
         }
         arrayOneRecursive(arr,n-1);
+    }
+    //problem 2
+    public static void arrayAvg(int[] arr){
+        arrayAvgRecursive(arr, arr.length - 1, 0.0);
+    }
+    public static void arrayAvgRecursive(int[] arr, int n, double sum){
+        sum = sum + arr[n];
+        if(n==0){
+            System.out.println(sum/arr.length);
+            return;
+        }
+        arrayAvgRecursive(arr, n-1, sum);
     }
 
 
