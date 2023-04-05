@@ -1,29 +1,38 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
+//        int a = sc.nextInt();
 
-        int n = sc.nextInt();
-        //int[] arr = new int[n];
-      //  for (int i = 0; i < n; i++) {
-     //       arr[i] = sc.nextInt();
-      //  }
+//        int n = sc.nextInt();
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//          arr[i] = sc.nextInt();
+//        }
 
+        String str = sc.next();
 
-        //problem 1
-        //arrayOne(arr);
-        //problem 2
-        //arrayAvg(arr);
-        //problem 3
-        //isPrime(n);
-        //problem 4
-        //factorial(n);
-        //problem 5
-        //System.out.println(fibonacci(n));
-        //problem 6
-        System.out.println(power(a,n));2
+//        problem 1
+//        arrayOne(arr);
+//        problem 2
+//        arrayAvg(arr);
+//        problem 3
+//        isPrime(n);
+//        problem 4
+//        factorial(n);
+//        problem 5
+//        System.out.println(fibonacci(n));
+//        problem 6
+//        System.out.println(power(a,n));
+//        problem 7
+//        permutations(str);
+//        problem 8
+//        checkDigit(str);
+//        problem 9
 
     }
     //problem 1
@@ -95,5 +104,45 @@ public class Main {
         if (n == 1) return a;
         return power(a,n-1)*a;
     }
+    //problem 7
+    public static void permutations(String str){
+        char[] charStr = str.toCharArray();
+        permutationsRecursive(charStr, 0);
+    }
+    public static void permutationsRecursive(char[] arr,int i){
+        if(i == arr.length - 1){
+            System.out.println(arr);
+            return;
+        }
+
+        for (int j = i ; j < arr.length; j++) {
+            char temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            permutationsRecursive(arr,i+1);
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    //problem 8
+    public static void checkDigit(String str){
+        char[] charStr = str.toCharArray();
+        checkDigitRecursive(charStr, 0);
+    }
+
+    public static void checkDigitRecursive(char[] arr,int n) {
+        if (n == arr.length){
+            System.out.println("Yes");
+            return;
+        }
+        if (Character.isLetter(arr[n])){
+            System.out.println("No");
+            return;
+        }
+        checkDigitRecursive(arr,n+1);
+    }
+
+
 
 }
