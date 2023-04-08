@@ -7,14 +7,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 //        int a = sc.nextInt();
-
-//        int n = sc.nextInt();
+        int n = sc.nextInt();
+        int k = sc.nextInt();
 //        int[] arr = new int[n];
 //        for (int i = 0; i < n; i++) {
 //          arr[i] = sc.nextInt();
 //        }
 
-        String str = sc.next();
+//        String str = sc.next();
 
 //        problem 1
 //        arrayOne(arr);
@@ -33,6 +33,9 @@ public class Main {
 //        problem 8
 //        checkDigit(str);
 //        problem 9
+//        System.out.println(binCoeff(n, k));
+//        problem 10
+        gcd(n,k);
 
     }
     //problem 1
@@ -142,7 +145,30 @@ public class Main {
         }
         checkDigitRecursive(arr,n+1);
     }
-
-
+    //problem 9
+    public static int binCoeff(int n, int k){
+        if(k == 0 || n == k){
+            return 1;
+        }
+        return binCoeff(n-1, k-1) + binCoeff(n-1, k);
+    }
+    //problem 10
+    public static void gcd(int n, int k){
+        if(k > n){
+            int[] arr = swap(n,k);
+            n = arr[0];
+            k = arr[1];
+        }
+        if(n % k == 0){
+            System.out.println(k);
+            return;
+        }
+        int m  = n % k;
+        gcd(k,m);
+    }
+    public static int[] swap(int n, int k){
+        int[] arr = new int[] {k, n};
+        return arr;
+    }
 
 }
